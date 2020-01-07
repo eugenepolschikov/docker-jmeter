@@ -1,5 +1,9 @@
 [![Docker Build](https://img.shields.io/docker/automated/justb4/jmeter.svg)](https://hub.docker.com/r/justb4/jmeter)
 
+# local jmeter command for nogui execution of debug_scenario.jmx  (local WINDOWS machine)
+``jmeter -n -t "D:\projects\2019-12(dmitry_jmeter_docker_aws)\aws_solution\docker-jmeter\tests\trivial\debug_scenario.jmx" -l "D:\projects\2019-12(dmitry_jmeter_docker_aws)\aws_solution\docker-jmeter\tests\trivial\debug_scenario.jtl"   -e -o "D:\projects\2019-12(dmitry_jmeter_docker_aws)\aws_solution\docker-jmeter\tests\trivial\dashboard" -Dthreads=5 -Drampup=5  & pause``
+
+
 # docker-jmeter
 ## Image on Docker Hub
 
