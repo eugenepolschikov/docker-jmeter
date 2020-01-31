@@ -52,3 +52,34 @@ check logs:
 sudo docker logs e8cf83d4392e
 => 
 https://i.imgur.com/rzNwB2H.png  
+
+======
+Stop and delete containers!
+sudo docker ps -a
+sudo docker stop hash1 hash2 hash3 ...
+sudo docker rm hash1 hash2 hash3 ....
+
+======
+https://www.vinsguru.com/jmeter-distributed-load-testing-using-docker/
+
+
+sudo docker exec -i master sh -c 'cat > /jmeter/apache-jmeter-3.3/bin/debug_scenario.jmx' < debug_scenario.jmx
+
+Copy current .jmx scenario from host to master: 
+sudo docker exec -i master sh -c 'cat > /jmeter/apache-jmeter-3.3/bin/debug_scenario.jmx' < /data/dockerjmeter-test/docker-jmeter/tests/trivial/debug_scenario.jmx
+
+Open 'jmeter master' container: sudo docker exec -it master /bin/bash
+
+Open jmeter folder, run: 
+jmeter -n -t debug_scenario.jmx  -R172.17.0.3,172.17.0.2 -l logdistributed/logdebug.jtl
+/slave02 => 172.17.0.3
+/slave01 => 172.17.0.2
+
+====
+Copy log to host after the execution
+1) open host
+cd /data/distributed-logs-only
+sudo docker cp master:/jmeter/apache-jmeter-3.3/bin/logdistributed/logdebugDISTRIBUTED.jtl .
+
+Convert .jtl log to dashboard HTML report: 
+jmeter -g /path/to/jtl/file -o /where/you/want/to/store/dashboard
