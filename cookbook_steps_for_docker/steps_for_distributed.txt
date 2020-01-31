@@ -15,6 +15,8 @@ HostIP=$(ip route show | awk '/default/ {print $9}') \
 && sudo docker pull dragoscampean/testrepo:jmetruslave \
 && sudo docker run -dit --name slave --network host -e HostIP=$HostIP -e HostIP=$HostIP -e Xms=256m -e Xmx=512m -e MaxMetaspaceSize=512m dragoscampean/testrepo:jmetruslave /bin/bash
 
+- where  '--name' parameter should be unique for every different slave.
+
 
 4) figure out that IP of master/slave
 4.a sudo docker ps -a
