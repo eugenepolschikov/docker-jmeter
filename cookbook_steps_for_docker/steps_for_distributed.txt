@@ -68,7 +68,8 @@ sudo docker exec -i master sh -c 'cat > /jmeter/apache-jmeter-3.3/bin/debug_scen
 Copy current .jmx scenario from host to master: 
 sudo docker exec -i master sh -c 'cat > /jmeter/apache-jmeter-3.3/bin/debug_scenario.jmx' < /data/dockerjmeter-test/docker-jmeter/tests/trivial/debug_scenario.jmx
 
-Open 'jmeter master' container: sudo docker exec -it master /bin/bash
+Open 'jmeter master' container: 
+sudo docker exec -it master /bin/bash
 
 Open jmeter folder, run: 
 jmeter -n -t debug_scenario.jmx  -R172.17.0.3,172.17.0.2 -l logdistributed/logdebug.jtl
