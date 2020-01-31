@@ -1,0 +1,52 @@
+Following step-by-step instruction from here: https://medium.com/@DragosCampean/how-to-build-a-distributed-load-testing-infrastructure-with-aws-docker-and-jmeter-accf3c2aa3a3
+
+I) configure the master node
+
+> HostIP=$(ip route show | awk '/default/ {print $9}') \
+&& sudo docker pull dragoscampean/testrepo:jmetrumaster \
+&& sudo docker run -dit --name master --network host -e HostIP=$HostIP -e Xms=256m -e Xmx=512m -e MaxMetaspaceSize=512m -v /opt/Sharedvolume:/opt/Sharedvolume dragoscampean/testrepo:jmetrumaster /bin/bash
+
+2) check that list of containers
+> sudo docker  ps -a
+
+
+3)  configure slave node(-s)
+HostIP=$(ip route show | awk '/default/ {print $9}') \
+&& sudo docker pull dragoscampean/testrepo:jmetruslave \
+&& sudo docker run -dit --name slave --network host -e HostIP=$HostIP -e HostIP=$HostIP -e Xms=256m -e Xmx=512m -e MaxMetaspaceSize=512m dragoscampean/testrepo:jmetruslave /bin/bash
+
+
+4) figure out that IP of master/slave
+4.a sudo docker ps -a
+=> list of hashes for every container
+
+ubuntu@ip-172-31-24-195:/data/dockerjmeter-test/docker-jmeter$ sudo docker ps -a
+CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS                                         PORTS               NAMES
+e778499e7f9c        justb4/jmeter:5.1.1                   "/entrypoint.sh -Dlo…"   4 minutes ago       Exited (0) 3                     minutes ago                       jmeter
+e8cf83d4392e        dragoscampean/testrepo:jmetruslave    "/entrypoint.sh /bin…"   21 minutes ago      Up 21 minute                    s                                  slave
+1030b52ccf54        dragoscampean/testrepo:jmetrumaster   "/entrypoint.sh /bin…"   23 minutes ago      Up 23 minute                    s                                  master
+
+4.b sudo docker inspect e8cf83d4392e
+=>    "HostIP=172.31.24.195",   https://i.imgur.com/DjmZvNq.png
+
+
+5) for jmeter level one should update
+https://github.com/eugenepolschikov/docker-jmeter test_updated.sh
+with the command to run script of pattern: 
+jmeter -n -t /path/to/scriptFile.jmx -Dserver.rmi.ssl.disable=true -R host1PrivateIP, host2PrivateIP,..., hostNPrivateIP -l /path/to/logfile.jtl
+where 'host1PrivateIP' - is the host of slave, ie. '172.31.24.195'
+
+
+6) after test execution finishes one of ways to check that slave executed .jmx scenario is:
+6.a sudo docker ps -a  
+=> 
+ubuntu@ip-172-31-24-195:/data/dockerjmeter-test/docker-jmeter$ sudo docker ps -a
+CONTAINER ID        IMAGE                                 COMMAND                  CREATED             STATUS                                         PORTS               NAMES
+e778499e7f9c        justb4/jmeter:5.1.1                   "/entrypoint.sh -Dlo…"   4 minutes ago       Exited (0) 3                     minutes ago                       jmeter
+e8cf83d4392e        dragoscampean/testrepo:jmetruslave    "/entrypoint.sh /bin…"   21 minutes ago      Up 21 minute                    s                                  slave
+1030b52ccf54        dragoscampean/testrepo:jmetrumaster   "/entrypoint.sh /bin…"   23 minutes ago      Up 23 minute                    s                                  master
+
+check logs: 
+sudo docker logs e8cf83d4392e
+=> 
+https://i.imgur.com/rzNwB2H.png  
