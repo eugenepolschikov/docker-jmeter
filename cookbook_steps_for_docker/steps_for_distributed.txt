@@ -71,8 +71,11 @@ sudo docker exec -i master sh -c 'cat > /jmeter/apache-jmeter-3.3/bin/debug_scen
 Open 'jmeter master' container: 
 sudo docker exec -it master /bin/bash
 
-Open jmeter folder, run: 
-jmeter -n -t debug_scenario.jmx  -R172.17.0.3,172.17.0.2 -l logdistributed/logdebug.jtl
+
+Open jmeter folder:
+cd  /jmeter/apache-jmeter-3.3/bin/
+run: 
+jmeter -n -t debug_scenario.jmx  -R172.17.0.3,172.17.0.2 -l logdistributed/logdebug.jtl -Dthreads=200 -Drampup=0 -Dloopcount=1
 /slave02 => 172.17.0.3
 /slave01 => 172.17.0.2
 
