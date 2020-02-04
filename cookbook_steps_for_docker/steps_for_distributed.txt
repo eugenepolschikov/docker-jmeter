@@ -83,7 +83,7 @@ jmeter -n -t debug_scenario.jmx  -R172.17.0.3,172.17.0.2 -l logdistributed/logde
 Copy log to host after the execution
 1) open host
 cd /data/distributed-logs-only
-sudo docker cp master:/jmeter/apache-jmeter-3.3/bin/logdistributed/logdebugDISTRIBUTED.jtl .
+sudo docker cp master:/jmeter/apache-jmeter-3.3/bin/logdistributed/logdebug.jtl .
 
 Convert .jtl log to dashboard HTML report: 
 jmeter -g /path/to/jtl/file -o /where/you/want/to/store/dashboard
