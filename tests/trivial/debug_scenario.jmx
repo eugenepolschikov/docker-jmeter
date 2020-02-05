@@ -51,7 +51,7 @@
           </elementProp>
           <elementProp name="threads" elementType="Argument">
             <stringProp name="Argument.name">threads</stringProp>
-            <stringProp name="Argument.value">${__P(threads, 300)}</stringProp>
+            <stringProp name="Argument.value">${__P(threads, 100)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="rampup" elementType="Argument">
@@ -401,7 +401,7 @@
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Primary Test  UPDATE apis" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Primary Test  UPDATE apis" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -708,6 +708,1030 @@
             </UniformRandomTimer>
             <hashTree/>
           </hashTree>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Primary Test FLOW VIDEO 720" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${loopcount}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${threads}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${rampup}</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <longProp name="ThreadGroup.start_time">1578322745000</longProp>
+        <longProp name="ThreadGroup.end_time">1578322745000</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=302558716-302568026" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=302558716-302568026</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes 0-302568026/302568027" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes 0-302568026/302568027</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=302350336-302568026" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=302350336-302568026</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=40020-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=40020-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=95649792-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=95649792-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=108232704-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=108232704-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=116621312-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=116621312-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=131334144-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=131334144-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=150306816-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=150306816-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=151355392-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=151355392-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=165904384-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=165904384-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=179339264-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=179339264-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=199360512-302350335" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=199360512-302350335</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=296943616-302568026" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=296943616-302568026</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=297992192-302568026" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=297992192-302568026</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET[partial-content, MD5] http://mindful-app.net/1/720.mp4" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${MINDFUL_APP_URL}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">1/720.mp4</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <boolProp name="HTTPSampler.md5">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager bytes=302186496-302568026" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9</stringProp>
+              </elementProp>
+              <elementProp name="Sec-Fetch-User" elementType="Header">
+                <stringProp name="Header.name">Cookie</stringProp>
+                <stringProp name="Header.value">TFSESSION=SQAAAPA4AAAAAQAAAA4AXwBjAHMAcgBmAEkAZAAAAAwAAAAAKDc3NDEzMzY4ZDdhMzc5MDhiMjJkNjA5NzdiMDdmMjQ2MjQ2OWQwYTA=_zQRGcMpCW2txNCYk/B9dqHTuvUQ=</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">keep-alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Range</stringProp>
+                <stringProp name="Header.value">bytes=302186496-302568026</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">${uniformtimer.constantdelay.offset}</stringProp>
+            <stringProp name="RandomTimer.range">${uniformtimer.randomdelay.max}</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
         </hashTree>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
